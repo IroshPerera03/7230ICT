@@ -1,0 +1,84 @@
+# R specific files
+.Rhistory
+.Rapp.history
+.RData
+.Ruserdata
+.Rproj.user/
+.httr-oauth
+.DS_Store
+.Rproj.user
+
+# Session Data files
+.RDataTmp
+
+# User-specific files
+.Ruserdata
+
+# R Environment Variables
+.Renviron
+
+# R Studio files
+*.Rproj.user/
+*.Rproj.user*
+*.utf8.md
+*.knit.md
+.Rproj.user/
+
+# Temporary files
+*~
+*.tmp
+*.temp
+.#*
+#*#
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Data files (often large and sensitive)
+data/temp/
+*.log
+
+# API keys and credentials
+keys.*
+config.ini
+*.env
+.env
+
+
+# Package development
+*.tar.gz
+*.tgz
+vignettes/*.html
+vignettes/*.pdf
+.httr-oauth
+
+# knitr and R markdown default cache directories
+*_cache/
+*_files/
+
+# Bookdown files
+_book/
+_bookdown_files/
+
+# pkgdown site
+docs/
+
+# Translation temp files
+po/*~
+
+# RStudio Connect folder
+rsconnect/
+
+# OAuth tokens
+.httr-oauth
+
+# Large data files
+# Packrat
+packrat/lib*/
+packrat/src/
