@@ -87,7 +87,6 @@ ggplot(topic_proportions, aes(x = factor(topic), y = avg_gamma,
   scale_fill_brewer(palette = "Set3")
 dev.off()
 
-# Create topic labels (you'll need to interpret based on terms)
 topic_labels <- data.frame(
   topic = 1:k,
   label = paste("Topic", 1:k, "- [Interpret based on top terms]")

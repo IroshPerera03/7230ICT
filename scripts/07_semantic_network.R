@@ -9,6 +9,7 @@ library(igraph)
 library(ggraph)
 library(dplyr)
 library(ggplot2)
+library(tidyr)
 
 cat("Loading preprocessed data from Q6...\n")
 load("data/processed/q6_tdm.RData")

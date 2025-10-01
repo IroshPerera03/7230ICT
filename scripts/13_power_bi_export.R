@@ -70,6 +70,21 @@ if (file.exists("data/processed/q8_centrality.RData")) {
   }
 }
 
+# 6. Bigram network data
+if (file.exists("data/processed/q7_semantic_network.RData")) {
+  load("data/processed/q7_semantic_network.RData")
+  
+  if (exists("bigrams")) {
+    write.csv(bigrams, "data/powerbi/bigrams.csv", row.names = FALSE)
+    cat("✓ bigrams.csv\n")
+  }
+  
+  if (exists("top10_pagerank_df")) {
+    write.csv(top10_pagerank_df, "data/powerbi/bigram_pagerank.csv", row.names = FALSE)
+    cat("✓ bigram_pagerank.csv\n")
+  }
+}
+
 cat("\nAll data exported to data/powerbi/\n")
 cat("\nNext steps:\n")
 cat("1. Open Power BI Desktop\n")
