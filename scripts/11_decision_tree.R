@@ -68,24 +68,15 @@ conf_matrix <- confusionMatrix(predictions, test_data$high_engagement)
 
 print(conf_matrix)
 
-# Feature importance (if available)
+# Feature importance
 if (length(tree_model$variable.importance) > 0) {
   importance_df <- data.frame(
     Feature = names(tree_model$variable.importance),
     Importance = tree_model$variable.importance
-  ) %>% arrange(desc(Importance))
+  ) %>%
+    arrange(desc(Importance)) %>%
+    mutate(Feature = factor(Feature, levels = rev(Feature)))
   
-  png("report/figures/q11_feature_importance.png", 
-      width = 900, height = 600, res = 150)
-  ggplot(importance_df, aes(x = reorder(Feature, Importance), y = Importance)) +
-    geom_col(fill = "steelblue") +
-    coord_flip() +
-    theme_minimal() +
-    labs(title = "Feature Importance for Engagement Prediction",
-         x = "Feature", y = "Importance Score")
-  dev.off()
-  
-  cat("Feature importance plot saved\n")
   print(importance_df)
 } else {
   cat("No variable importance available (tree too simple)\n")
@@ -93,7 +84,7 @@ if (length(tree_model$variable.importance) > 0) {
 }
 
 # Save everything
-save(tree_model, predictions, conf_matrix, performance, importance_df,
+save(tree_model, predictions, conf_matrix, importance_df,
      file = "data/processed/q11_decision_tree.RData")
 
 cat("\nQ11 Complete.\n")

@@ -54,10 +54,6 @@ dir.create("data/raw", recursive = TRUE, showWarnings = FALSE)
 save(all_threads, file = "data/raw/reddit_threads.RData")
 write_csv(all_threads, "data/raw/reddit_threads.csv")
 
-# Show top threads
-message("\nTop 10 threads by comment count:")
-print(all_threads %>% select(title, comments, subreddit) %>% head(10))
-
 # Get comments from top 30 threads
 top_threads <- head(all_threads, 30)
 
@@ -104,3 +100,4 @@ cat("\nTotal:", nrow(reddit_comments), "comments from",
     n_distinct(reddit_comments$thread_title), "threads\n")
 cat("\nComments by subreddit:\n")
 print(subreddit_summary)
+

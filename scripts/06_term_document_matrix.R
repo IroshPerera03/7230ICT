@@ -1,6 +1,5 @@
 # ============================================================================
 # Q6: Text Preprocessing and Term-Document Matrix Analysis
-# Ed Sheeran Social Media Analytics
 # ============================================================================
 
 library(tm)
@@ -47,7 +46,7 @@ cat("Cleaned", length(all_text_clean), "documents\n")
 # 2. CREATE CORPUS AND APPLY TM PREPROCESSING -------------------------------
 corpus <- VCorpus(VectorSource(all_text_clean))
 
-# Custom stopwords - aggressive filtering
+# Custom stopwords
 custom_stops <- c(
   "ed", "sheeran", "edsheeran", 
   "song", "songs", "music", "musical",
@@ -87,40 +86,9 @@ top10_terms <- head(meaningful_terms, 10)
 cat("\n=== Q6 RESULTS: Top 10 Most Frequent Terms (Stemmed) ===\n")
 print(top10_terms)
 
-# Create dataframe for visualization
-top10_df <- data.frame(
-  term = names(top10_terms),
-  frequency = as.numeric(top10_terms),
-  row.names = NULL
-)
-
-# 5. VISUALIZATION ---------------------------------------------------------
-dir.create("report/figures", recursive = TRUE, showWarnings = FALSE)
-
-png("report/figures/q6_top10_terms.png", width = 900, height = 600, res = 150)
-ggplot(top10_df, aes(x = reorder(term, frequency), y = frequency)) +
-  geom_col(fill = "steelblue", width = 0.7) +
-  geom_text(aes(label = frequency), hjust = -0.2, size = 4) +
-  coord_flip() +
-  theme_minimal(base_size = 13) +
-  labs(
-    title = "Top 10 Most Frequent Terms",
-    subtitle = "Ed Sheeran Discussions (YouTube + Reddit) | After preprocessing & stemming",
-    x = "Term (Stemmed)",
-    y = "Frequency"
-  ) +
-  theme(
-    plot.title = element_text(face = "bold", size = 16),
-    plot.subtitle = element_text(size = 12, color = "gray40")
-  )
-dev.off()
-
-cat("\nVisualization saved to: report/figures/q6_top10_terms.png\n")
-
 # 6. SAVE PROCESSED DATA ---------------------------------------------------
 dir.create("data/processed", recursive = TRUE, showWarnings = FALSE)
 
-# Save for Q7 to use
 save(
   all_text_clean,           # Cleaned text (for Q7 bigrams)
   corpus_clean,             # Cleaned corpus
